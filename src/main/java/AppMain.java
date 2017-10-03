@@ -8,15 +8,16 @@ import org.hibernate.Transaction;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceUnit;
 
+
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.List;
+
 public class AppMain {
 
     public static void main(String[] args) {
-        System.out.println("Hibernate tutorial start");
-
-        Session session = HibernateUtil.getSessionFactory().openSession();
-
-
-        Transaction tx = session.beginTransaction();
 
         EmployeeEntity employee = new EmployeeEntity();
         employee.setFirstName("FirstName");
@@ -34,10 +35,18 @@ public class AppMain {
         car.setYear(2015);
         employee.addCar(car);
 
-        session.save(employee);
 
-        tx.commit();
-        session.close();
+
+        CriteriaBuilder builder = HibernateUtil.getCriteriaBuilder();
+        EntityManager em = HibernateUtil.getEntityManager();
+        CriteriaQuery<String> criteriaQuery = builder.createQuery(String.class);
+        Root<CarsEntity> carsRoot = criteriaQuery.from(CarsEntity.class);
+        criteriaQuery.select(carsRoot.get("id").as(String.class));
+        criteriaQuery.where(builder.equal(carsRoot.get("model"), "calina"));
+        List<String> nameList = em.createQuery(criteriaQuery).getResultList();
+        for (String name : nameList) {
+            System.out.println(name);
+        }
+
     }
-
 }
