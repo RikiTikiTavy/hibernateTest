@@ -60,4 +60,9 @@ public class CompanyEntity {
     }
 
 
+    @Override
+    public String toString(){
+        return getName() + " ";
+    }
+
 }
