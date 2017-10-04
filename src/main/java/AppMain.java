@@ -23,20 +23,20 @@ public class AppMain {
             entityManager.setFlushMode(FlushModeType.COMMIT);
 
             EmployeeEntity employee = new EmployeeEntity();
-            employee.setFirstName("FirstName");
-            employee.setLastName("LastName");
+            employee.setFirstName("Oleg");
+            employee.setLastName("Veshii");
 
             //add first car to employee
-            CarsEntity car = new CarsEntity();
-            car.setModel("vaz21099");
-            car.setYear(1991);
-            employee.addCar(car);
+            CompanyEntity company = new CompanyEntity();
+            company.setName("vaz21099");
+            company.setYear(1991);
+            employee.addCompany(company);
 
             //add second car to employee
-            car = new CarsEntity();
-            car.setModel("calina");
-            car.setYear(2015);
-            employee.addCar(car);
+            company = new CompanyEntity();
+            company.setName("calina");
+            company.setYear(2015);
+            employee.addCompany(company);
 
             entityManager.persist(employee);
             entityManager.flush();
@@ -54,7 +54,7 @@ public class AppMain {
         CriteriaBuilder builder = HibernateUtil.getCriteriaBuilder();
         EntityManager em = HibernateUtil.getEntityManager();
         CriteriaQuery<String> criteriaQuery = builder.createQuery(String.class);
-        Root<CarsEntity> carsRoot = criteriaQuery.from(CarsEntity.class);
+        Root<CompanyEntity> carsRoot = criteriaQuery.from(CompanyEntity.class);
         criteriaQuery.select(carsRoot.get("id").as(String.class));
         criteriaQuery.where(builder.equal(carsRoot.get("model"), "calina"));
         List<String> nameList = em.createQuery(criteriaQuery).getResultList();
