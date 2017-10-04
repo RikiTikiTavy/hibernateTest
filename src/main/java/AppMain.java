@@ -3,7 +3,6 @@
  */
 import org.hibernate.HibernateException;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.FlushModeType;
 import javax.persistence.TypedQuery;
@@ -48,20 +47,22 @@ public class AppMain {
             e.printStackTrace();
         }
 
-//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//        CriteriaQuery<EmployeeEntity> criteriaQuery = criteriaBuilder
-//                .createQuery(EmployeeEntity.class);
-//
-//        Root<EmployeeEntity> companyRoot = criteriaQuery.from(EmployeeEntity.class);
-//
-//        Join<EmployeeEntity, Integer> takeJoin = companyRoot.join(EmployeeEntity_.year);
-//
-//        criteriaQuery.where(criteriaBuilder.equal(companyRoot.get(EmployeeEntity_.firstname), "Oleg"));
-//
-//        TypedQuery<EmployeeEntity> typedQuery = entityManager.createQuery(criteriaQuery);
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<EmployeeEntity> criteriaQuery = criteriaBuilder
+                .createQuery(EmployeeEntity.class);
 
+        Root<EmployeeEntity> companyRoot = criteriaQuery.from(EmployeeEntity.class);
 
+        Join<EmployeeEntity, CompanyEntity> takeJoin = companyRoot.join(EmployeeEntity_.companys);
 
+       // criteriaQuery.where(criteriaBuilder.equal(companyRoot.get(EmployeeEntity_.firstName), "Oleg"));
+
+        TypedQuery<EmployeeEntity> typedQuery = entityManager.createQuery(criteriaQuery);
+
+       List list =  typedQuery.getResultList();
+        for(Object j: list){
+            System.out.println(j);
+        }
 
 
             //Simple query
