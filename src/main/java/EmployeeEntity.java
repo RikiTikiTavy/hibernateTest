@@ -13,6 +13,9 @@ public class EmployeeEntity {
     private String firstName;
     private String lastName;
 
+
+    private Type type;
+
     private Set<CompanyEntity> companys = new HashSet<CompanyEntity>();
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -61,6 +64,18 @@ public class EmployeeEntity {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
 
     @Override
     public String toString() {

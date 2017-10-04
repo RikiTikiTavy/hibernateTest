@@ -3,6 +3,5 @@ CompanyEntity.class
 HibernateUtil.class
 EmployeeEntity_.class
 AppMain.class
-CompanyEntity_.java
+Type.class
 CompanyEntity_.class
-EmployeeEntity_.java
