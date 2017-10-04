@@ -1,15 +1,13 @@
 /**
  * Created by Roman on 04.10.2017.
  */
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceUnit;
-
-
-import javax.persistence.EntityManager;
+import javax.persistence.FlushModeType;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -17,23 +15,42 @@ import java.util.List;
 
 public class AppMain {
 
+   static EntityManager entityManager = HibernateUtil.getEntityManager();
+
     public static void main(String[] args) {
 
-        EmployeeEntity employee = new EmployeeEntity();
-        employee.setFirstName("FirstName");
-        employee.setLastName("LastName");
 
-        //add first car to employee
-        CarsEntity car = new CarsEntity();
-        car.setModel("vaz21099");
-        car.setYear(1991);
-        employee.addCar(car);
+        try {
 
-        //add second car to employee
-        car = new CarsEntity();
-        car.setModel("calina");
-        car.setYear(2015);
-        employee.addCar(car);
+            entityManager.getTransaction().begin();
+            entityManager.setFlushMode(FlushModeType.COMMIT);
+
+            EmployeeEntity employee = new EmployeeEntity();
+            employee.setFirstName("FirstName");
+            employee.setLastName("LastName");
+
+            //add first car to employee
+            CarsEntity car = new CarsEntity();
+            car.setModel("vaz21099");
+            car.setYear(1991);
+            employee.addCar(car);
+
+            //add second car to employee
+            car = new CarsEntity();
+            car.setModel("calina");
+            car.setYear(2015);
+            employee.addCar(car);
+
+            entityManager.persist(employee);
+            entityManager.flush();
+
+            entityManager.getTransaction().commit();
+
+        } catch (HibernateException e) {
+
+            e.printStackTrace();
+        }
+
 
 
 

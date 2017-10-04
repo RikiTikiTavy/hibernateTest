@@ -23,6 +23,7 @@ import javax.persistence.criteria.CriteriaBuilder;
  */
 public class HibernateUtil {
 
+
     private static final EntityManagerFactory emFactory;
     static {
         emFactory = Persistence.createEntityManagerFactory("company");
@@ -31,9 +32,8 @@ public class HibernateUtil {
         CriteriaBuilder builder = emFactory.getCriteriaBuilder();
         return  builder;
     }
+
     public static EntityManager getEntityManager(){
         return emFactory.createEntityManager();
     }
-
-
 }
