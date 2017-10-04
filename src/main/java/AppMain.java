@@ -26,15 +26,16 @@ public class AppMain {
             employee.setFirstName("Oleg");
             employee.setLastName("Veshii");
 
-            //add first car to employee
+
             CompanyEntity company = new CompanyEntity();
-            company.setName("vaz21099");
+            company.setName("Yamaha");
+
             company.setYear(1991);
             employee.addCompany(company);
 
-            //add second car to employee
+
             company = new CompanyEntity();
-            company.setName("calina");
+            company.setName("Gazprom");
             company.setYear(2015);
             employee.addCompany(company);
 
@@ -54,9 +55,9 @@ public class AppMain {
         CriteriaBuilder builder = HibernateUtil.getCriteriaBuilder();
         EntityManager em = HibernateUtil.getEntityManager();
         CriteriaQuery<String> criteriaQuery = builder.createQuery(String.class);
-        Root<CompanyEntity> carsRoot = criteriaQuery.from(CompanyEntity.class);
-        criteriaQuery.select(carsRoot.get("id").as(String.class));
-        criteriaQuery.where(builder.equal(carsRoot.get("model"), "calina"));
+        Root<CompanyEntity> companyRoot = criteriaQuery.from(CompanyEntity.class);
+        criteriaQuery.select(companyRoot.get("id").as(String.class));
+        criteriaQuery.where(builder.equal(companyRoot.get("name"), "Yamaha"));
         List<String> nameList = em.createQuery(criteriaQuery).getResultList();
         for (String name : nameList) {
             System.out.println(name);

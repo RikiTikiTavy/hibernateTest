@@ -15,11 +15,11 @@ public class CompanyEntity {
     private int id;
     private Integer year;
 
-    public void setModel(String model) {
-        this.model = model;
-    }
+    private String name;
 
-    private String model;
+    public void setName(String name) {
+        this.name = name;
+    }
 
     private Set<EmployeeEntity> employeeSet = new HashSet<EmployeeEntity>();
     @ManyToMany
@@ -54,13 +54,10 @@ public class CompanyEntity {
         this.year = year;
     }
 
-
-    @Column(name = "model")
-    public String getModel() {
-        return model;
+    @Column(name = "name")
+    public String getName() {
+        return name;
     }
 
-    public void setName(String model) {
-        this.model = model;
-    }
+
 }
