@@ -6,9 +6,8 @@ import org.hibernate.HibernateException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.FlushModeType;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 public class AppMain {
@@ -49,19 +48,34 @@ public class AppMain {
             e.printStackTrace();
         }
 
+//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//        CriteriaQuery<EmployeeEntity> criteriaQuery = criteriaBuilder
+//                .createQuery(EmployeeEntity.class);
+//
+//        Root<EmployeeEntity> companyRoot = criteriaQuery.from(EmployeeEntity.class);
+//
+//        Join<EmployeeEntity, Integer> takeJoin = companyRoot.join(EmployeeEntity_.year);
+//
+//        criteriaQuery.where(criteriaBuilder.equal(companyRoot.get(EmployeeEntity_.firstname), "Oleg"));
+//
+//        TypedQuery<EmployeeEntity> typedQuery = entityManager.createQuery(criteriaQuery);
 
 
 
-        CriteriaBuilder builder = HibernateUtil.getCriteriaBuilder();
-        EntityManager em = HibernateUtil.getEntityManager();
-        CriteriaQuery<String> criteriaQuery = builder.createQuery(String.class);
-        Root<CompanyEntity> companyRoot = criteriaQuery.from(CompanyEntity.class);
-        criteriaQuery.select(companyRoot.get("id").as(String.class));
-        criteriaQuery.where(builder.equal(companyRoot.get("name"), "Yamaha"));
-        List<String> nameList = em.createQuery(criteriaQuery).getResultList();
-        for (String name : nameList) {
-            System.out.println(name);
-        }
+
+
+            //Simple query
+
+//        CriteriaBuilder builder = HibernateUtil.getCriteriaBuilder();
+//        EntityManager em = HibernateUtil.getEntityManager();
+//        CriteriaQuery<String> criteriaQuery = builder.createQuery(String.class);
+//        Root<CompanyEntity> companyRoot = criteriaQuery.from(CompanyEntity.class);
+//        criteriaQuery.select(companyRoot.get("id").as(String.class));
+//        criteriaQuery.where(builder.equal(companyRoot.get("name"), "Yamaha"));
+//        List<String> nameList = em.createQuery(criteriaQuery).getResultList();
+//        for (String name : nameList) {
+//            System.out.println(name);
+//        }
 
     }
 }
