@@ -31,7 +31,7 @@ public class CarsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -40,7 +40,7 @@ public class CarsEntity {
         this.id = id;
     }
 
-    @Column(name = "year", nullable = true, insertable = true, updatable = true)
+    @Column(name = "year")
     public Integer getYear() {
         return year;
     }
@@ -50,7 +50,7 @@ public class CarsEntity {
     }
 
 
-    @Column(name = "model", nullable = true, insertable = true, updatable = true, length = 50)
+    @Column(name = "model")
     public String getModel() {
         return model;
     }
@@ -58,5 +58,4 @@ public class CarsEntity {
     public void setModel(String model) {
         this.model = model;
     }
-
 }

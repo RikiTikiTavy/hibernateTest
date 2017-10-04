@@ -33,7 +33,7 @@ public class EmployeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -43,7 +43,7 @@ public class EmployeeEntity {
     }
 
 
-    @Column(name = "firstName", nullable = true, insertable = true, updatable = true, length = 200)
+    @Column(name = "firstName")
     public String getFirstName() {
         return firstName;
     }
@@ -53,7 +53,7 @@ public class EmployeeEntity {
     }
 
 
-    @Column(name = "lastName", nullable = true, insertable = true, updatable = true, length = 200)
+    @Column(name = "lastName")
     public String getLastName() {
         return lastName;
     }

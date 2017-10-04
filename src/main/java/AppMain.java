@@ -2,8 +2,6 @@
  * Created by Roman on 04.10.2017.
  */
 import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 
 import javax.persistence.EntityManager;
@@ -18,7 +16,6 @@ public class AppMain {
    static EntityManager entityManager = HibernateUtil.getEntityManager();
 
     public static void main(String[] args) {
-
 
         try {
 
