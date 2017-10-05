@@ -68,6 +68,7 @@ public class EmployeeEntity {
 
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "type_id")
     public Type getType() {
         return type;
     }

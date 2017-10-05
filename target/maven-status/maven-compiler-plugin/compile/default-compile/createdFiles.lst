@@ -1,5 +1,6 @@
 EmployeeEntity.class
 CompanyEntity.class
+Type_.class
 HibernateUtil.class
 EmployeeEntity_.class
 AppMain.class

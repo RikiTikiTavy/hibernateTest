@@ -1,4 +1,6 @@
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by roman on 10/4/17.
@@ -7,8 +9,23 @@ import javax.persistence.*;
 @Table(name = "Type")
 public class Type {
 
-    public long type_Id;
+
+
+    private Set<EmployeeEntity> employeeEntitySet = new HashSet<EmployeeEntity>();
+
+    public int type_Id;
     public String typeName;
+
+    @OneToMany(mappedBy = "type")
+    public Set<EmployeeEntity> getEmployeeEntitySet() {
+        return employeeEntitySet;
+    }
+
+    public void setEmployeeEntitySet(Set<EmployeeEntity> employeeEntitySet) {
+        this.employeeEntitySet = employeeEntitySet;
+    }
+
+
 
     public Type(){
 
@@ -17,12 +34,12 @@ public class Type {
     @Id
     @GeneratedValue
     @Column(name = "TYPE_ID")
-    public long getTypeId() {
+    public int getType_Id() {
         return type_Id;
     }
 
-    public void setTypeId(long typeId) {
-        this.type_Id = typeId;
+    public void setType_Id(int type_Id) {
+        this.type_Id = type_Id;
     }
 
     @Column(name = "TYPE_NAME", nullable = false, length = 100)
