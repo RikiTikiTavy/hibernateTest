@@ -7,9 +7,11 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "Type")
-public class Type {
+public enum  Type {
 
-
+    ADMIN("admin"),
+    TESTER("tester"),
+    SUPPORT("support");
 
     private Set<EmployeeEntity> employeeEntitySet = new HashSet<EmployeeEntity>();
 
@@ -25,9 +27,11 @@ public class Type {
         this.employeeEntitySet = employeeEntitySet;
     }
 
+     Type(String typeName){
+            this.typeName = typeName;
+    }
 
-
-    public Type(){
+     Type(){
 
     }
 
