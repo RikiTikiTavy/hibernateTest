@@ -54,6 +54,11 @@ public class AppMain {
             company3.setName("TrumpIncorporated");
             company3.setYear(2001);
 
+//            company1.addEmployee(employee1);
+//            company1.addEmployee(employee2);
+//            company2.addEmployee(employee1);
+//            company2.addEmployee(employee3);
+
             employee1.addCompany(company1);
             employee1.addCompany(company2);
             employee1.setType(Type.SUPPORT);
@@ -63,7 +68,6 @@ public class AppMain {
 
 
             employee3.addCompany(company2);
-            employee3.addCompany(company3);
             employee3.setType(Type.ADMIN);
 
 
@@ -112,8 +116,24 @@ public class AppMain {
 
 
 
-        //Working Query for employee
+        //Query for company
+
+//        CriteriaQuery<EmployeeEntity> criteriaQuery = criteriaBuilder
+//                .createQuery(EmployeeEntity.class);
 //
+//        Root<CompanyEntity> root = criteriaQuery.from(CompanyEntity.class);
+//        Join<CompanyEntity, EmployeeEntity> takeJoin = root.join(CompanyEntity_.employeeSet);
+//        criteriaQuery.select(takeJoin).where(criteriaBuilder.equal(root.get(EmployeeEntity_.firstName), "Marina"));
+//
+//        TypedQuery<EmployeeEntity> typedQuery = entityManager.createQuery(criteriaQuery);
+//
+//        List list =  typedQuery.getResultList();
+//        for(Object j: list){
+//            System.out.println(j);
+//        }
+
+        //Working Query for employee
+
 //        CriteriaQuery<CompanyEntity> criteriaQuery = criteriaBuilder
 //                .createQuery(CompanyEntity.class);
 //
@@ -133,14 +153,33 @@ public class AppMain {
         CriteriaQuery<EmployeeEntity> criteriaQuery = criteriaBuilder
                 .createQuery(EmployeeEntity.class);
 
+        CriteriaQuery<CompanyEntity> criteriaQuery2 = criteriaBuilder
+                .createQuery(CompanyEntity.class);
+
         Root<CompanyEntity> root = criteriaQuery.from(CompanyEntity.class);
+        Root<EmployeeEntity> root2 = criteriaQuery2.from(EmployeeEntity.class);
+
+        Join<EmployeeEntity, CompanyEntity> takeJoin2 = root2.join(EmployeeEntity_.companys);
         Join<CompanyEntity, EmployeeEntity> takeJoin = root.join(CompanyEntity_.employeeSet);
+
+        criteriaQuery2.select(takeJoin2).where(criteriaBuilder.equal(root2.get(EmployeeEntity_.firstName), "Oleg"));
+        TypedQuery<CompanyEntity> typedQuery2 = entityManager.createQuery(criteriaQuery2);
+
+        List<CompanyEntity> list2 =  typedQuery2.getResultList();
+
+        for(CompanyEntity j: list2){
+            System.out.println(j);
+        }
+
+
+
         criteriaQuery.select(takeJoin);
 
         TypedQuery<EmployeeEntity> typedQuery = entityManager.createQuery(criteriaQuery);
 
-        List list =  typedQuery.getResultList();
-        for(Object j: list){
+        List<EmployeeEntity> list =  typedQuery.getResultList();
+
+        for(EmployeeEntity j: list){
             System.out.println(j);
         }
 

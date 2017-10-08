@@ -22,7 +22,7 @@ public class CompanyEntity {
     }
 
     private Set<EmployeeEntity> employeeSet = new HashSet<EmployeeEntity>();
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "employee_company",
             joinColumns = @JoinColumn(name = "company_id"),
             inverseJoinColumns = @JoinColumn(name = "employee_id"))
@@ -62,7 +62,12 @@ public class CompanyEntity {
 
     @Override
     public String toString(){
-        return getName() + " ";
+        return getName() + " " + getEmployeeSet();
     }
 
+
+    public void addEmployee(EmployeeEntity employee) {
+        employeeSet.add(employee);
+     //   employee.getCompanys().add(this);
+    }
 }

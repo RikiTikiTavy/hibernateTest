@@ -30,8 +30,8 @@ public class EmployeeEntity {
         this.companys = companys;
     }
 
-    public void addCompany(CompanyEntity car) {
-        companys.add(car);
+    public void addCompany(CompanyEntity company) {
+        companys.add(company);
     }
 
     @Id
@@ -82,8 +82,8 @@ public class EmployeeEntity {
     public String toString() {
         return "EmployeeEntity{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+                ", firstName=" + firstName +
+                ", lastName=" + lastName +
+                ", companySet=" + companys + '}';
     }
 }
