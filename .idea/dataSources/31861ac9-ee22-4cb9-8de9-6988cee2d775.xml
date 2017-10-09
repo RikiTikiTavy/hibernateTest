@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="postgres@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.2">
+    <root id="1"/>
+    <database id="2" parent="1" name="postgres">
+      <ObjectId>12443</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <schema id="3" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2017-10-09.13:44:09.238</IntrospectionTimestamp>
+      <IntrospectionStateNumber>8571</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="4" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="5" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="6" parent="2" name="pg_temp_1">
+      <ObjectId>11848</ObjectId>
+    </schema>
+    <schema id="7" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11849</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="information_schema">
+      <ObjectId>12155</ObjectId>
+    </schema>
+    <sequence id="9" parent="3" name="company_id_seq">
+      <ObjectId>33880</ObjectId>
+      <StateNumber>8565</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="10" parent="3" name="employee_id_seq">
+      <ObjectId>33888</ObjectId>
+      <StateNumber>8566</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="11" parent="3" name="hibernate_sequence">
+      <ObjectId>33878</ObjectId>
+      <StateNumber>8564</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <table id="12" parent="3" name="company">
+      <ObjectId>33882</ObjectId>
+      <StateNumber>8571</StateNumber>
+    </table>
+    <table id="13" parent="3" name="employee">
+      <ObjectId>33890</ObjectId>
+      <StateNumber>8570</StateNumber>
+    </table>
+    <table id="14" parent="3" name="employee_company">
+      <ObjectId>33899</ObjectId>
+      <StateNumber>8571</StateNumber>
+    </table>
+    <table id="15" parent="3" name="type">
+      <ObjectId>33904</ObjectId>
+      <StateNumber>8569</StateNumber>
+    </table>
+    <column id="16" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>8565</StateNumber>
+      <SequenceName>company_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;company_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="17" parent="12" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>8565</StateNumber>
+    </column>
+    <column id="18" parent="12" name="year">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>8565</StateNumber>
+    </column>
+    <index id="19" parent="12" name="company_pkey">
+      <ObjectId>33886</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="20" parent="12" name="company_pkey">
+      <ObjectId>33887</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>company_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="21" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>8566</StateNumber>
+      <SequenceName>employee_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;employee_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="22" parent="13" name="firstname">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>8566</StateNumber>
+    </column>
+    <column id="23" parent="13" name="lastname">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>8566</StateNumber>
+    </column>
+    <column id="24" parent="13" name="type_id">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>8566</StateNumber>
+    </column>
+    <index id="25" parent="13" name="employee_pkey">
+      <ObjectId>33897</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="26" parent="13" name="employee_pkey">
+      <ObjectId>33898</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>employee_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="27" parent="13" name="fkbnyhaukbyoc7ibtva0r5wybl9">
+      <ObjectId>33909</ObjectId>
+      <ColNames>type_id</ColNames>
+      <RefTableName>type</RefTableName>
+      <RefKeyName>type_pkey</RefKeyName>
+      <RefColNames>type_id</RefColNames>
+    </foreign-key>
+    <column id="28" parent="14" name="company_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>8567</StateNumber>
+    </column>
+    <column id="29" parent="14" name="employee_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>8567</StateNumber>
+    </column>
+    <index id="30" parent="14" name="employee_company_pkey">
+      <ObjectId>33902</ObjectId>
+      <ColNames>employee_id
+company_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="31" parent="14" name="employee_company_pkey">
+      <ObjectId>33903</ObjectId>
+      <ColNames>employee_id
+company_id</ColNames>
+      <UnderlyingIndexName>employee_company_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="32" parent="14" name="fkeutkgol56vah6wn4h1pkl93r7">
+      <ObjectId>33919</ObjectId>
+      <ColNames>company_id</ColNames>
+      <RefTableName>company</RefTableName>
+      <RefKeyName>company_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="33" parent="14" name="fko31sbjcq5di5nwykktwryyom5">
+      <ObjectId>33914</ObjectId>
+      <ColNames>employee_id</ColNames>
+      <RefTableName>employee</RefTableName>
+      <RefKeyName>employee_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="34" parent="15" name="type_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>8568</StateNumber>
+    </column>
+    <column id="35" parent="15" name="type_name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>8568</StateNumber>
+    </column>
+    <index id="36" parent="15" name="type_pkey">
+      <ObjectId>33907</ObjectId>
+      <ColNames>type_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="37" parent="15" name="type_pkey">
+      <ObjectId>33908</ObjectId>
+      <ColNames>type_id</ColNames>
+      <UnderlyingIndexName>type_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
