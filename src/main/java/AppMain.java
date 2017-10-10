@@ -20,6 +20,7 @@ public class AppMain {
         try {
 
             entityManager.getTransaction().begin();
+
             entityManager.setFlushMode(FlushModeType.COMMIT);
 
             EmployeeEntity employee1 = new EmployeeEntity();
@@ -53,10 +54,7 @@ public class AppMain {
             company3.setName("TrumpIncorporated");
             company3.setYear(2001);
 
-//            company1.addEmployee(employee1);
-//            company1.addEmployee(employee2);
-//            company2.addEmployee(employee1);
-//            company2.addEmployee(employee3);
+
 
             employee1.addCompany(company1);
             employee1.addCompany(company3);
@@ -72,14 +70,18 @@ public class AppMain {
             employee4.addCompany(company2);
             employee4.setType(Type.TESTER);
 
-
-//            entityManager.persist(company1);
-//            entityManager.persist(company2);
-//            entityManager.persist(company3);
-
             entityManager.persist(employee1);
             entityManager.persist(employee2);
             entityManager.persist(employee3);
+
+//            company1.addEmployee(employee1);
+//            company1.addEmployee(employee2);
+//            company2.addEmployee(employee1);
+//            company2.addEmployee(employee3);
+//
+//            entityManager.persist(company1);
+//            entityManager.persist(company2);
+//            entityManager.persist(company3);
 
             entityManager.flush();
 
@@ -91,5 +93,9 @@ public class AppMain {
 
         tester.getEmployeeCompanysThroughCompany("Oleg");
 
+//        tester.queryForType(Type.ADMIN);
+
+//            tester.getCompanyEmployee();
+//            tester.getCompanyThroughEmployee("Oleg");
     }
 }

@@ -84,6 +84,8 @@ public class EmployeeEntity {
                 "id=" + id +
                 ", firstName=" + firstName +
                 ", lastName=" + lastName +
-                ", companySet=" + companys + '}';
+                ", Type=" + type +
+                ", companySet=" + companys +
+                '}';
     }
 }

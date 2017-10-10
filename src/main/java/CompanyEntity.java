@@ -2,6 +2,8 @@
  * Created by Roman on 04.10.2017.
  */
 
+import org.json.JSONObject;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,12 +18,12 @@ public class CompanyEntity {
     private Integer year;
 
     private String name;
+    private Set<EmployeeEntity> employeeSet = new HashSet<EmployeeEntity>();
 
     public void setName(String name) {
         this.name = name;
     }
 
-    private Set<EmployeeEntity> employeeSet = new HashSet<EmployeeEntity>();
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "employee_company",
             joinColumns = @JoinColumn(name = "company_id"),

@@ -15,8 +15,8 @@ public enum  Type {
 
     private Set<EmployeeEntity> employeeEntitySet = new HashSet<EmployeeEntity>();
 
-    public int type_Id;
-    public String typeName;
+    private int type_Id;
+    private String typeName;
 
     @OneToMany(mappedBy = "type")
     public Set<EmployeeEntity> getEmployeeEntitySet() {

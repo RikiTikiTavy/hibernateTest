@@ -19,6 +19,7 @@ public class Tester {
         return entityManager;
     }
 
+
     public void getEmployeeCompanysThroughCompany(String employeeName){
 
         CriteriaQuery<EmployeeEntity> criteriaQuery = criteriaBuilder
@@ -39,14 +40,13 @@ public class Tester {
         System.out.println(employee.getCompanys());
     }
 
-
     public void getCompanyThroughEmployee(String employeeName){
         CriteriaQuery<CompanyEntity> criteriaQuery = criteriaBuilder
                 .createQuery(CompanyEntity.class);
 
         Root<EmployeeEntity> root = criteriaQuery.from(EmployeeEntity.class);
         Join<EmployeeEntity, CompanyEntity> takeJoin = root.join(EmployeeEntity_.companys);
-        criteriaQuery.select(takeJoin).where(criteriaBuilder.equal(root.get(EmployeeEntity_.firstName), "Marina"));
+        criteriaQuery.select(takeJoin).where(criteriaBuilder.equal(root.get(EmployeeEntity_.firstName), employeeName));
 
         TypedQuery<CompanyEntity> typedQuery = entityManager.createQuery(criteriaQuery);
 
@@ -55,6 +55,7 @@ public class Tester {
             System.out.println(j);
         }
     }
+
 
     public void simpleQuery(){
         CriteriaQuery<String> criteriaQuery = criteriaBuilder.createQuery(String.class);
@@ -67,7 +68,7 @@ public class Tester {
         }
     }
 
-    public void takeCompanyEmployee(){
+    public void getCompanyEmployee(){
         CriteriaQuery<EmployeeEntity> criteriaQuery = criteriaBuilder
                 .createQuery(EmployeeEntity.class);
 
@@ -83,13 +84,15 @@ public class Tester {
         }
     }
 
-    public void queryForType(){
+
+
+    public void queryForType(Type type){
         CriteriaQuery<EmployeeEntity> criteriaQuery = criteriaBuilder
                 .createQuery(EmployeeEntity.class);
 
         Root<Type> root = criteriaQuery.from(Type.class);
         Join<Type, EmployeeEntity> takeJoin = root.join(Type_.employeeEntitySet);
-        criteriaQuery.select(takeJoin).where(criteriaBuilder.equal(root.get(Type_.typeName), "admin"));
+        criteriaQuery.select(takeJoin).where(criteriaBuilder.equal(root.get(Type_.typeName), type.getTypeName()));
 
         TypedQuery<EmployeeEntity> typedQuery = entityManager.createQuery(criteriaQuery);
 
