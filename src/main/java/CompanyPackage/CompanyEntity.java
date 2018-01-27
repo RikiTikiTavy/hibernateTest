@@ -1,8 +1,7 @@
-/**
+package CompanyPackage; /**
  * Created by Roman on 04.10.2017.
  */
 
-import org.json.JSONObject;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,7 +10,7 @@ import java.util.Set;
 /**
  * Created by Nick on 18.10.2015.
  */
-@Entity
+//@Entity
 @Table(name = "company")
 public class CompanyEntity {
     private int id;

@@ -1,3 +1,4 @@
+package CompanyPackage;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -5,7 +6,7 @@ import java.util.Set;
 /**
  * Created by roman on 10/4/17.
  */
-@Entity
+//@Entity
 @Table(name = "Type")
 public enum  Type {
 
@@ -27,11 +28,11 @@ public enum  Type {
         this.employeeEntitySet = employeeEntitySet;
     }
 
-     Type(String typeName){
-            this.typeName = typeName;
+    Type(String typeName){
+        this.typeName = typeName;
     }
 
-     Type(){
+    Type(){
 
     }
 

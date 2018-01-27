@@ -1,4 +1,4 @@
-/**
+package CompanyPackage; /**
  * Created by Roman on 04.10.2017.
  */
 import org.hibernate.HibernateException;
@@ -46,11 +46,11 @@ public class AppMain {
             company1.setName("Yamaha");
             company1.setYear(1991);
 
-            CompanyEntity  company2 = new CompanyEntity();
+            CompanyEntity company2 = new CompanyEntity();
             company2.setName("Gazprom");
             company2.setYear(2015);
 
-            CompanyEntity  company3 = new CompanyEntity();
+            CompanyEntity company3 = new CompanyEntity();
             company3.setName("TrumpIncorporated");
             company3.setYear(2001);
 

@@ -2,11 +2,13 @@
  * Created by Roman on 04.10.2017.
  */
 
+package CompanyPackage;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+//@Entity
 @Table(name = "employee")
 public class EmployeeEntity {
     private int id;

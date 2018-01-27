@@ -1,3 +1,6 @@
+package CompanyPackage;
+
+
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;

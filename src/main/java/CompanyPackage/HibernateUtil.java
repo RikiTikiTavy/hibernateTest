@@ -1,4 +1,4 @@
-
+package CompanyPackage;
 /**
  * Created by Roman on 20.09.2017.
  */

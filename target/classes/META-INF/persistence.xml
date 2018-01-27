@@ -8,15 +8,15 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 
-        <class>CompanyEntity</class>
-        <class>EmployeeEntity</class>
-        <class>Type</class>
+        <!--<class>CompanyEntity</class>-->
+        <!--<class>EmployeeEntity</class>-->
+        <!--<class>Type</class>-->
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url"  value="jdbc:postgresql://localhost:5433/postgres"/>
+            <property name="javax.persistence.jdbc.url"  value="jdbc:postgresql://localhost:5432/postgres"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
-            <property name="javax.persistence.jdbc.password" value="password"/>
+            <property name="javax.persistence.jdbc.password" value="postgres"/>
             <property name="hibernate.hbm2ddl.auto" value = "create"/>
             <property name="hibernate.show_sql" value="true"/>
 
